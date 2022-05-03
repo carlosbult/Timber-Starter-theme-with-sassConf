@@ -1,0 +1,144 @@
+/*
+
+  With this reset we are going to solve:
+    👉 Unify the use of Custom Properties.
+    👉 More general box-model problems
+    👉 Problems with images, videos and svg icons
+    👉 Problems with fonts and input tags in forms
+    👉 Unify the typography of all the labels of a website
+
+*/
+
+/* Here we define the Custom properties */
+:root{
+    --negro         : #393939;
+    
+    /* Typography */
+    --tipo-principal   : Helvetica, Arial, sans-serif;
+    --tipo-secundaria  : Verdana;
+  }
+    
+  /* We adapt them to the dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root{
+        --negro         : #ececec;
+    }
+  }
+  
+  /* Optional */
+  /* Set whether a user has activated the high contrast mode. (WD) */
+  @media (prefers-contrast: high){
+      :root{}
+  }
+  
+  /* Optional */
+  /* Disable the animations in case the user has configured the mode without animation */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+  
+  
+  
+  /* We reset the margins and paddings of all the labels */
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+  }
+  
+  /* We avoid problems with the images */
+  img , picture , video , iframe , figure{
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    /* optional */ object-fit: cover;        
+    /* optional */ object-position: center center;
+  }
+  
+  /* We reset the links to work as boxes... */
+  a {
+    display: block;
+    text-decoration: none;
+    color:inherit;
+    font-size:inherit;
+  }
+  /* ... except for those found in paragraphs */
+  p a {
+    display: inline;
+  }
+  
+  /* We remove the dots from the <li> */
+  li {
+    list-style-type: none;
+  }
+  
+  /* We configure soft anchors */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* We deactivate default styles of the main text labels */
+  h1 , h2 , h3 , h4 , h5 , h6 , p ,span , a , strong , blockquote , i , b , u , em {
+    font-size: 1em;
+    font-weight: inherit;
+    font-style: inherit;
+    text-decoration: none;
+    color:inherit;
+  }
+  /* Avoid problems with pseudo-elements in quotes */
+  blockquote:before, blockquote:after, q:before, q:after {
+      content: '';
+      content: none;
+  }
+  
+  /* We configure the text we select */
+  ::selection {
+    background-color: var(--negro);
+    color: var(--blanco);
+  }
+  
+  /* We level typography and form placement issues */
+  form , input, textarea, select , button , label{
+      font-family: inherit;
+      font-size: inherit;
+      hyphens: auto;
+      background-color: transparent;
+      color:inherit;
+      display: block;
+      /* optional */ appearance: none;
+  }
+  
+  /* Reset the tables */
+  table , tr , td {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  /* Avoid SVG problems */
+  svg{
+      width: 100%;
+      display: block;
+      fill: currentColor;
+  }
+ /* (Testing, do not use in production) In the case of adding a */
+  /* p svg{
+    display: inline;
+    width: initial;
+  } */
+  /* We set the typography for the whole web */
+  body {
+    min-height  : 100vh;
+    font-size   : 100%;
+    font-family : var(--tipo-principal);
+    color       : var(--negro);
+    /* optional */ line-height: 1.4em;
+    /* optional */ hyphens: auto;
+    /* optional */ font-smooth: always;
+    /* optional */ -webkit-font-smoothing: antialiased;
+    /* optional */ -moz-osx-font-smoothing: grayscale;
+  }

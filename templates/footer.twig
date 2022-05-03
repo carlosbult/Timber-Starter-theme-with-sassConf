@@ -1,0 +1,14 @@
+<h2> Pinche </h2>
+
+<ul>
+    <li>Prueba 1</li>
+    <li>Prueba 2</li>
+    <li>Prueba 3</li>
+    <li>Prueba 4</li>
+</ul>
+
+<nav id="nav-main" class="nav-main" role="navigation">
+    {% include "menu.twig" with {'items': menu.get_items} %}
+</nav>
+
+Copyright {{"now"|date('Y')}}
