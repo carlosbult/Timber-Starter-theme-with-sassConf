@@ -6,4 +6,5 @@ mix
   .setPublicPath('dist')
   .options({
     autoprefixer: { remove: false },
-  });
+  })
+ .browserSync('http://localhost/youThemeName');
